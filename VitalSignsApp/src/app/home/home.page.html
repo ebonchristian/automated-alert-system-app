@@ -1,0 +1,102 @@
+<ion-app>
+  <ion-content>
+    <ion-toolbar>
+      <!-- Icons -->
+      <ion-buttons slot="start">
+        <ion-icon name="watch-outline"></ion-icon>
+        <ion-icon name="warning-outline"></ion-icon>
+        <ion-icon name="walk-outline"></ion-icon>
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon name="water-outline"></ion-icon>
+        <ion-icon name="speedometer-outline"></ion-icon>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <!-- Slot "end" to locate the datetime to the upper right corner -->
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <!-- For the 3 vital signs and input -->
+    <ion-card-content>
+      <ion-card-title>Automated Alert System</ion-card-title>
+      <ion-card-header>
+        <ion-card-subtitle color="light">
+          Normal
+          <ion-icon color="success" name="ellipse"></ion-icon>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/heartrate.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Heart rate" type="number" placeholder="bpm" id="heart-rate-input"></ion-input>
+        </ion-item>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/bp.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Blood pressure" type="number" placeholder="mmHg" id="bp-input"></ion-input>
+        </ion-item>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/SpO2.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Oxygen level" type="number" placeholder="%" id="oxygen-level-input"></ion-input>
+        </ion-item>
+      </ion-item>
+
+      <ion-item>
+        <ion-button fill="clear" onclick="checkVitalSigns()">Submit</ion-button>
+      </ion-item>
+    </ion-card-content>
+
+    <!-- For tabs bottom -->
+    <ion-tabs>
+      <ion-tab-bar>
+        <ion-tab-button>
+          <ion-icon name="home" label="Home" routerLink="/not-normal"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="settings" label="Settings" routerLink="/settings"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="reader" label="Reports" routerLink="/report"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-content>
+
+  <script>
+    function checkVitalSigns() {
+      var heartRateInput = parseInt(document.getElementById("heart-rate-input").value);
+      var bpInput = parseInt(document.getElementById("bp-input").value);
+      var oxygenLevelInput = parseInt(document.getElementById("oxygen-level-input").value);
+
+      var isHeartRateNormal = heartRateInput >= 60 && heartRateInput <= 100;
+      var isBPNormal = bpInput < 120;
+      var isOxygenLevelNormal = oxygenLevelInput >= 95;
+
+      if (isHeartRateNormal && isBPNormal && isOxygenLevelNormal) {
+        // All vital signs are normal, redirect to report page
+        window.location.href = "/report";
+      } else {
+        // At least one vital sign is not normal, redirect to alert page
+        window.location.href = "/alert";
+      }
+    }
+  </script>
+</ion-app>
