@@ -37,7 +37,7 @@
           <img alt="Silhouette of mountains" src="/assets/heartrate.png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Heart rate" type="number" placeholder="bpm" id="heart-rate-input"></ion-input>
+          <ion-input label="Heart rate" type="number" placeholder="bpm" id="heart-rate-input" [(ngModel)]="heartRate"></ion-input>
         </ion-item>
       </ion-item>
 
@@ -46,7 +46,7 @@
           <img alt="Silhouette of mountains" src="/assets/bp.png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Blood pressure" type="number" placeholder="mmHg" id="bp-input"></ion-input>
+          <ion-input label="Blood pressure" type="number" placeholder="mmHg" id="bp-input" [(ngModel)]="bloodPressure"></ion-input>
         </ion-item>
       </ion-item>
 
@@ -55,12 +55,12 @@
           <img alt="Silhouette of mountains" src="/assets/SpO2.png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Oxygen level" type="number" placeholder="%" id="oxygen-level-input"></ion-input>
+          <ion-input label="Oxygen level" type="number" placeholder="%" id="oxygen-level-input" [(ngModel)]="oxygenLevel"></ion-input>
         </ion-item>
       </ion-item>
 
       <ion-item>
-        <ion-button fill="clear" (click)="checkVitalSigns()">Submit</ion-button>
+        <ion-button fill="clear" (click)="checkVitalSigns()" (click)="submitData()">Submit</ion-button>
 
       </ion-item>
     </ion-card-content>
@@ -75,7 +75,7 @@
           <ion-icon name="settings" label="Settings" routerLink="/settings"></ion-icon>
         </ion-tab-button>
         <ion-tab-button>
-          <ion-icon name="reader" label="Reports" routerLink="/report"></ion-icon>
+          <ion-icon name="reader" label="Reports" routerLink="/report" (click)="viewReport()"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
