@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-content>
+  
     <ion-toolbar>
       <!-- Icons -->
       <ion-buttons slot="start">
@@ -21,7 +21,7 @@
         </ion-modal>
       </ion-buttons>
     </ion-toolbar>
-
+    <ion-content>
     <!-- For the 3 vital signs and input -->
     <ion-card-content>
       <ion-card-title>Automated Alert System</ion-card-title>
@@ -60,7 +60,8 @@
       </ion-item>
 
       <ion-item>
-        <ion-button fill="clear" onclick="checkVitalSigns()">Submit</ion-button>
+        <ion-button fill="clear" (click)="checkVitalSigns()">Submit</ion-button>
+
       </ion-item>
     </ion-card-content>
 
@@ -78,25 +79,9 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
+
+
   </ion-content>
 
-  <script>
-    function checkVitalSigns() {
-      var heartRateInput = parseInt(document.getElementById("heart-rate-input").value);
-      var bpInput = parseInt(document.getElementById("bp-input").value);
-      var oxygenLevelInput = parseInt(document.getElementById("oxygen-level-input").value);
-
-      var isHeartRateNormal = heartRateInput >= 60 && heartRateInput <= 100;
-      var isBPNormal = bpInput < 120;
-      var isOxygenLevelNormal = oxygenLevelInput >= 95;
-
-      if (isHeartRateNormal && isBPNormal && isOxygenLevelNormal) {
-        // All vital signs are normal, redirect to report page
-        window.location.href = "/report";
-      } else {
-        // At least one vital sign is not normal, redirect to alert page
-        window.location.href = "/alert";
-      }
-    }
-  </script>
+ 
 </ion-app>
