@@ -9,18 +9,24 @@
         Reports
       </ion-title>
       <ion-buttons slot="end">
-        <ion-button color="dark" routerLink="/home"> Back </ion-button>
+        <ion-button color="primary" routerLink="/home"> Back </ion-button>
       </ion-buttons>
+  
     </ion-toolbar>
   </ion-header>
   
-  <ion-content [fullscreen]="true">
-    <ion-content>
-      <h1>Report</h1>
-      <p>Heart Rate: {{ heartRate }}</p>
-      <p>Blood Pressure: {{ bloodPressure }}</p>
-      <p>Oxygen Level: {{ oxygenLevel }}</p>
-    </ion-content>
+
+
+
+<ion-content [fullscreen]="true">
+  <ion-content>
+  
+    <p>Heart Rate: {{ heartRate }}</p>
+    <p>Blood Pressure: {{ bloodPressure }}</p>
+    <p>Oxygen Level: {{ oxygenLevel }}</p>
   </ion-content>
+  
+  
+</ion-content>
 
 

@@ -3,17 +3,26 @@
 
 ion-content{
 
-    --background : linear-gradient( rgb(0, 0, 0) ,#960000) ;
-    
-   
-   
-   
-   
-   
-   
-   ion-card-subtitle{
-     text-transform: initial;
-   }
-   
-   }
-   
+  --background : #778a93;
+  
+ 
+}
+
+
+ ion-card-title{
+  $font-family-base: 'Roboto', sans-serif;
+  justify-content: center;
+  color: rgb(255, 0, 0);
+
+
+
+ }
+ 
+ 
+ ion-card-subtitle{
+   text-transform: initial;
+   $font-family-base: 'Roboto', sans-serif;
+ }
+
+
+

@@ -3,12 +3,24 @@
 
 ion-content{
 
-  --background : linear-gradient(rgb(25, 190, 3),rgb(0, 0, 0));
-  
+  --background : #778a93;
+
  
- 
- 
- 
+}
+
+/* .border {
+  ion-item {
+    border-radius: 20px 0 20px 0;
+  }
+} */
+
+ ion-card-title{
+  $font-family-base: 'Nunito', sans-serif;
+  color: white;
+
+
+
+ }
  
  
  ion-card-subtitle{
@@ -17,4 +29,3 @@ ion-content{
 
 
 
-}
