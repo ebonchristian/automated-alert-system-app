@@ -3,14 +3,18 @@
 
 ion-content{
 
-    --background : #778a93;
+  --background :linear-gradient(45deg, blue, red);
     p{
     color:  #ffffff;
+    justify-content: center;
+    text-align: center;
     }
  
+
+
   
-    text-align: center;
-    -ms-flex-item-align: center;
+    
+ 
 
    
    

@@ -1,25 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button> Messages </ion-button>
-    </ion-buttons>
-  
-    <ion-buttons slot="end">
-      <ion-button routerLink="/home"> Back </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-button size="large" color="warning" fill="clear" id="present-alert">
-    <ion-icon name="warning-outline"></ion-icon>
-  </ion-button>
-  <ion-alert
-    trigger="present-alert"
-    header="Alert"
-    subHeader="Message"
-    message="Vital Signs are Not Normal!"
-    [buttons]="alertButtons"
-  ></ion-alert>
+
+
+  <ion-header [translucent]="true">
+
+
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button color="dark"> Messages </ion-button>
+      </ion-buttons>
+    
+      <ion-buttons slot="end">
+        <ion-button color="primary" routerLink="/home" > Back </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content  [fullscreen]="true" >
+   
+    <ion-item  color="clear">
+      <ion-badge slot="end">1</ion-badge>
+      <ion-button  size="small" color="dark" fill="clear" id="present-alert">
+        <p><strong>Alert message</strong></p>
+      </ion-button>
+      <ion-alert
+        trigger="present-alert"
+        header="Alert"
+        subHeader="Message"
+        message="Vital Signs are Not Normal!"
+        [buttons]="alertButtons"
+      ></ion-alert>
+    </ion-item>
+    
+    <ion-item  disabled="true" >
+      <ion-button  size="small" color="dark" fill="clear" id="present-alert">
+        <p>Berto</p>
+      </ion-button>
+    </ion-item>
+    <ion-item  disabled="true" >
+      <ion-button  size="small" color="dark" fill="clear" id="present-alert">
+        <p>Mang Kanor</p>
+      </ion-button>
+    </ion-item>
+    <ion-item  disabled="true" >
+      <ion-button  size="small" color="dark" fill="clear" id="present-alert">
+        <p>Si Kuwan</p>
+      </ion-button>
+    </ion-item>
+    <ion-item  disabled="true" >
+      <ion-button  size="small" color="dark" fill="clear" id="present-alert">
+        <p>Bebe</p>
+      </ion-button>
+    </ion-item>
+  
+    
+  
+  </ion-content>
+  
 
 </ion-content>
+

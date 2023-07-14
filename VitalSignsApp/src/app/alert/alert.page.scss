@@ -7,7 +7,7 @@
 
 ion-content{
 
-    --background : #778a93;
+  --background :linear-gradient(45deg, blue, red);
     
    
    
@@ -20,7 +20,9 @@ ion-content{
    }
    
  
-   
+   ion-list{
+    color: transparent;
+   }
 
 ion-button{
     display: flex;
@@ -28,8 +30,16 @@ ion-button{
     align-items: center;
     text-align: center;
     height: 100%;
+    color: transparent;
   
     }   
+
+    ion-badge {
+      --background: rgb(0, 21, 255);
+      --color: white;
+      --padding-end: 20px;
+      --padding-start: 20px;
+    }
 }
    
 

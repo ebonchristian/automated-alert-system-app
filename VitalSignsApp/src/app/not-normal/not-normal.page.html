@@ -1,6 +1,6 @@
-<ion-content >
+<ion-content [fullscreen]="true">
 
-
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-icon name="watch-outline"></ion-icon>
@@ -23,6 +23,8 @@
     </ion-buttons>
   </ion-toolbar>
 
+</ion-header>
+  
 <!--- For the 3 vital signs and input-->
 <ion-card>
   <ion-card-header>
@@ -68,7 +70,7 @@
 
   <!--For tabs bottom-->
   <ion-tabs>
-    <ion-tab-bar>
+    <ion-tab-bar [translucent]="true">
       <ion-tab-button >
         <ion-icon name="home" label="Home" routerLink="/alert"></ion-icon>
         
