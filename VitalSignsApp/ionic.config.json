@@ -1,8 +1,0 @@
-{
-  "name": "VitalSignsApp",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular"
-}
