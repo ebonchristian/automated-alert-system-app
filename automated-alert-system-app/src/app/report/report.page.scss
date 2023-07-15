@@ -1,0 +1,30 @@
+ion-content {
+  --background: linear-gradient(45deg, blue, red);
+  color: #ffffff;
+
+  ion-grid {
+    ion-row {
+      align-items: center;
+      ion-col:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .header-cell {
+      font-weight: bold;
+    }
+
+  
+ 
+  }
+  .normal {
+    color: green;
+  }
+  
+  .not-normal {
+    color: red;
+  }
+  
+}

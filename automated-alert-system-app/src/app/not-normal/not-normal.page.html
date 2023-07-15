@@ -1,0 +1,54 @@
+<ion-content>
+  <!-- Display the inputted values -->
+  <ion-card-content>
+    <ion-card-title>Automated Alert System</ion-card-title>
+    <ion-card-header>
+      <ion-card-subtitle color="light">
+        Not Normal
+        <ion-icon color="warning" name="ellipse"></ion-icon>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-item class="heartrate">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="/assets/heartrate.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Heart Rate: {{ heartRate }} bpm</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="bp">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="/assets/bp.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Blood Pressure: {{ bp }} mmHg</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="spo2">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="/assets/SpO2.png" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Oxygen Level: {{ oxygenLevel }} %</h2>
+      </ion-label>
+    </ion-item>
+  </ion-card-content>
+
+  <!-- For tabs bottom -->
+  <ion-tabs>
+    <ion-tab-bar [translucent]="true">
+      <ion-tab-button>
+        <ion-icon name="home" label="Home" routerLink="/home"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon name="settings" label="Settings" routerLink="/settings"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button>
+        <ion-icon name="reader" label="Reports" routerLink="/report"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

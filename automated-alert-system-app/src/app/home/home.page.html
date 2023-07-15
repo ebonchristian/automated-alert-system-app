@@ -1,0 +1,95 @@
+<ion-app >
+  <ion-content>
+ <!---<ion-header [translucent]="true">
+
+    <ion-toolbar >
+     
+      <ion-buttons slot="start">
+        <ion-icon name="watch-outline"></ion-icon>
+        <ion-icon name="warning-outline"></ion-icon>
+        <ion-icon name="walk-outline"></ion-icon>
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon name="water-outline"></ion-icon>
+        <ion-icon name="speedometer-outline"></ion-icon>
+      </ion-buttons>
+      <ion-buttons  slot="end">
+
+        <ion-datetime-button datetime="datetime" ></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>-->
+    
+   
+   
+    <!-- For the 3 vital signs and input -->
+
+    
+    <ion-card-content>
+      <ion-card-title>Automated Alert System</ion-card-title>
+      <ion-card-header>
+        <ion-card-subtitle color="light">
+          Active
+          <ion-icon color="success" name="ellipse"></ion-icon>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-item class="heartrate">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/heartrate.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Heart rate" type="number" placeholder="bpm" id="heart-rate-input" [(ngModel)]="heartRate"></ion-input>
+        </ion-item>
+      </ion-item>
+
+      <ion-item class="bp">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/bp.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Blood pressure" type="text" placeholder="mmHg" id="bp-input" [(ngModel)]="bloodPressure"></ion-input>
+        </ion-item>
+      </ion-item>
+      
+
+      <ion-item class="spo2">
+        <ion-thumbnail slot="start">
+          <img alt="Silhouette of mountains" src="/assets/SpO2.png" />
+        </ion-thumbnail>
+        <ion-item>
+          <ion-input label="Oxygen level" type="number" placeholder="%" id="oxygen-level-input" [(ngModel)]="oxygenLevel"></ion-input>
+        </ion-item>
+      </ion-item>
+
+      <ion-item class="bot">
+        <ion-button color="danger" (click)="checkVitalSigns()" (click)="submitData()">Submit</ion-button>
+
+      </ion-item>
+
+    </ion-card-content>
+
+    <!-- For tabs bottom -->
+    <ion-tabs >
+      <ion-tab-bar [translucent]="true">
+        <ion-tab-button>
+          <ion-icon name="home" label="Home" routerLink="/not-normal"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="settings" label="Settings" routerLink="/settings"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button>
+          <ion-icon name="reader" label="Reports" routerLink="/report" (click)="viewReport()"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+
+
+  </ion-content>
+
+ 
+</ion-app>
