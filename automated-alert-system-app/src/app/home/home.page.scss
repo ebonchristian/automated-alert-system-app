@@ -39,15 +39,17 @@ ion-content{
  }
 
  ion-button {
-  padding-left: 40%;
+
   --border-radius: 10px 10px 10px 10px;
   filter: drop-shadow(3px 3px 3px black);
+ 
 }
 .bot{
+  
   --border-radius: 0px 0px 20px 20px;
 }
 .buttonclick{
-  padding-left: 50%;
+  margin: 0 auto;
   --border-radius: 20px 20px 20px 20px;
   filter: drop-shadow(3px 3px 3px black);
 }
@@ -56,6 +58,7 @@ ion-content{
   justify-content: center;
   text-align: justify;
 }
+
 
 
 }

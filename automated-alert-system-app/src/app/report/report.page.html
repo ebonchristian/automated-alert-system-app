@@ -18,9 +18,9 @@
       </ion-row>
       
       <ion-row *ngFor="let report of reports; let i = index">
-        <ion-col size="4">{{ report.heartRate }}</ion-col>
-        <ion-col size="4">{{ report.bloodPressure }}</ion-col>
-        <ion-col size="3">{{ report.oxygenLevel }}</ion-col>
+        <ion-col size="4">{{ report.heartRate }}bpm</ion-col>
+        <ion-col size="4">{{ report.bloodPressure }}mmHg</ion-col>
+        <ion-col size="3">{{ report.oxygenLevel }}%</ion-col>
         <ion-col size="1">
           <ion-button size="small"  fill="clear" (click)="deleteReport(i)">
             <ion-icon color="dark" name="backspace"></ion-icon>

@@ -45,7 +45,7 @@ export class HomePage {
     var isOxygenLevelNormal = oxygenLevelInput >= 95 && oxygenLevelInput <= 99;
   
     if (isHeartRateNormal && isBPNormal && isOxygenLevelNormal) {
-      // All vital signs are normal, do not navigate to any page
+      // All vital signs are normal, store the report and clear the input fields
       const newReport = {
         heartRate: heartRateInput,
         bloodPressure: bpInput,
@@ -55,19 +55,23 @@ export class HomePage {
       let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
       storedReports.push(newReport);
       localStorage.setItem('reports', JSON.stringify(storedReports));
+  
+      // Clear the input fields after submitting
+      this.heartRate = 0;
+      this.bloodPressure = '';
+      this.oxygenLevel = 0;
     } else {
       // At least one vital sign is not normal, navigate to the not normal page and pass the values
-      this.router.navigate(['/not-normal'], { state: { heartRate: heartRateInput, bp: bpInput, oxygenLevel: oxygenLevelInput } });
+      this.router.navigate(['/not-normal'], {
+        queryParams: {
+          heartRate: heartRateInput,
+          bp: bpInput,
+          oxygenLevel: oxygenLevelInput
+        }
+      });
     }
-    this.router.navigate(['/not-normal'], {
-  queryParams: {
-    heartRate: heartRateInput,
-    bp: bpInput,
-    oxygenLevel: oxygenLevelInput
   }
-});
-
-  }
+  
   
   
   
