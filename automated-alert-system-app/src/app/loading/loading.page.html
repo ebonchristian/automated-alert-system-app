@@ -1,13 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>loading</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- app.component.html -->
+<ion-app>
+  <!-- Your app content here -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">loading</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+  <div class="custom-loading-overlay" *ngIf="isLoading">
+  
+    <p><ion-spinner></ion-spinner>Generating a message alert... </p>
+  </div>
+</ion-app>

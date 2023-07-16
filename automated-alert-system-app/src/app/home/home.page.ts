@@ -14,22 +14,24 @@ export class HomePage {
   
   constructor(private navCtrl: NavController, private router: Router) {}
   
-  submitData() {
-    const newReport = {
-      heartRate: this.heartRate || 0,
-      bloodPressure: this.bloodPressure || '',
-      oxygenLevel: this.oxygenLevel || 0
-    };
-  
-    let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
-    storedReports.push(newReport);
-    localStorage.setItem('reports', JSON.stringify(storedReports));
-  
-    // Clear the input fields after submitting
-    this.heartRate = 0;
-    this.bloodPressure = '';
-    this.oxygenLevel = 0;
-  }
+submitData() {
+  const newReport = {
+    date: new Date(), // Add the current date to the report
+    heartRate: this.heartRate || 0,
+    bloodPressure: this.bloodPressure || '',
+    oxygenLevel: this.oxygenLevel || 0
+  };
+
+  let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
+  storedReports.push(newReport);
+  localStorage.setItem('reports', JSON.stringify(storedReports));
+
+  // Clear the input fields after submitting
+  this.heartRate = 0;
+  this.bloodPressure = '';
+  this.oxygenLevel = 0;
+}
+
   
 
   checkVitalSigns() {

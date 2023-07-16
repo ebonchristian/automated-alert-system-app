@@ -22,7 +22,11 @@ export class NotNormalPage implements OnInit {
     });
 
     setTimeout(() => {
-      this.navCtrl.navigateForward('/alert');
+      this.navCtrl.navigateForward('/loading').then(() => {
+        setTimeout(() => {
+          this.navCtrl.navigateForward('/alert');
+        }, 5000); // 5000 milliseconds = 5 seconds
+      });
     }, 5000); // 5000 milliseconds = 5 seconds
   }
 }

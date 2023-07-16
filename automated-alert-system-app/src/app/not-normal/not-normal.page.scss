@@ -3,7 +3,7 @@
 
 ion-content{
 
-  --background :linear-gradient(45deg, blue, red);
+  --background :linear-gradient(#9E9E9E, rgb(0, 0, 0));
 
  
 
@@ -14,12 +14,13 @@ ion-content{
   }
 } */
 
- ion-card-title{
+ion-card-title{
   $font-family-base: 'Nunito', sans-serif;
-  color: white;
-  filter: drop-shadow(5px 5px 5px black);
+  color: #DD9250;
+  filter: drop-shadow(2px 2px 1px black);
   text-align: center;
   height: 50px;
+
 
 
 
