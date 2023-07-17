@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -12,7 +12,7 @@ export class NotNormalPage implements OnInit {
   bp: string = '';
   oxygenLevel: number = 0;
 
-  constructor(private navCtrl: NavController, private route: ActivatedRoute) {}
+  constructor(private navCtrl: NavController, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
@@ -30,9 +30,18 @@ export class NotNormalPage implements OnInit {
     }, 5000); // 5000 milliseconds = 5 seconds
   }
 
-  isNotNormal(value: number | string): boolean {
-    // Define your condition to determine if the value is "not normal"
-    // Example condition: If the value is '1' for blood pressure, consider it "not normal"
-    return String(value) === '1';
+  isNotNormalHeartRate(): boolean {
+    return this.heartRate < 60 || this.heartRate > 100;
+  }
+
+  isNotNormalBP(): boolean {
+    const bpValues = this.bp.split('/');
+    const systolic = parseInt(bpValues[0]);
+    const diastolic = parseInt(bpValues[1]);
+    return isNaN(systolic) || isNaN(diastolic) || systolic >= 120 || diastolic >= 80;
+  }
+
+  isNotNormalOxygenLevel(): boolean {
+    return this.oxygenLevel < 95 || this.oxygenLevel > 99;
   }
 }

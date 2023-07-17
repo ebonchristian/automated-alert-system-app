@@ -21,19 +21,20 @@ export class ReportPage {
     this.loadReports();
   }
 
-  loadReports() {
-    const storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
-    this.reports = storedReports
-      .filter((report: any) => report.heartRate || report.bloodPressure || report.oxygenLevel) // Filter out empty objects
-      .map((report: any) => ({
-        date: new Date(report.date),
-        heartRate: report.heartRate,
-        bloodPressure: report.bloodPressure,
-        oxygenLevel: report.oxygenLevel,
-        isNormal: this.isReportNormal(report),
-      }))
-      .reverse();
-  }
+loadReports() {
+  const storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
+  this.reports = storedReports
+    .filter((report: any) => report.heartRate || report.bloodPressure || report.oxygenLevel)
+    .map((report: any) => ({
+      date: new Date(report.date), // Convert the date string to a Date object
+      heartRate: report.heartRate,
+      bloodPressure: report.bloodPressure,
+      oxygenLevel: report.oxygenLevel,
+      isNormal: this.isReportNormal(report),
+    }))
+    .reverse();
+}
+
   
   
   getDate(date: Date): string {
@@ -46,6 +47,17 @@ export class ReportPage {
     return date.toLocaleTimeString(undefined, options);
   }
   
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
+    return currentDate.toLocaleDateString(undefined, options);
+  }
+  
+  getCurrentTime(): string {
+    const currentDate = new Date();
+    const options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' };
+    return currentDate.toLocaleTimeString(undefined, options);
+  }
   
 
   isBloodPressureNormal(bloodPressure: string): boolean {

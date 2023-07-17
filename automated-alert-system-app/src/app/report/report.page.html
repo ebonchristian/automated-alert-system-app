@@ -20,8 +20,8 @@
       </ion-row>
       
       <ion-row *ngFor="let report of reports; let i = index" class="rates" [class.not-normal]="!report.isNormal">
-        <ion-col size="3">{{ getDate(report.date) }}</ion-col>
-        <ion-col size="2">{{ getTime(report.date) }}</ion-col>
+        <ion-col size="3">{{ report.isNormal ? getCurrentDate() : getDate(report.date) }}</ion-col>
+        <ion-col size="2">{{ report.isNormal ? getCurrentTime() : getTime(report.date) }}</ion-col>
         <ion-col size="2">{{ report.heartRate }} bpm</ion-col>
         <ion-col size="2">{{ report.bloodPressure }} mmHg</ion-col>
         <ion-col size="2">{{ report.oxygenLevel }}%</ion-col>

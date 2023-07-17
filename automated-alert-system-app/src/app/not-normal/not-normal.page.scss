@@ -69,5 +69,12 @@ ion-item {
 .not-normal-values {
   color: red; /* Change the color to your desired value */
 }
+.not-normal {
+  color: red;
+}
+
+.not-normal-text {
+  color: red !important;
+}
 
 }
