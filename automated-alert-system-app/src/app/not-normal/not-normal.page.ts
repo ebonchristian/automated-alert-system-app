@@ -29,4 +29,10 @@ export class NotNormalPage implements OnInit {
       });
     }, 5000); // 5000 milliseconds = 5 seconds
   }
+
+  isNotNormal(value: number | string): boolean {
+    // Define your condition to determine if the value is "not normal"
+    // Example condition: If the value is '1' for blood pressure, consider it "not normal"
+    return String(value) === '1';
+  }
 }

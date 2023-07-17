@@ -28,9 +28,9 @@
    
     <!-- For the 3 vital signs and input -->
 
-    
+   
     <ion-card-content>
-      <ion-card-title>Automated Alert System</ion-card-title>
+      <ion-card-title><img src="assets/title.png"></ion-card-title>
       <ion-card-header>
         <ion-card-subtitle color="light">
           Active
@@ -40,38 +40,58 @@
 
       <ion-item class="heartrate">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="/assets/heartrate.png" />
+          <img alt="Silhouette of mountains" src="/assets/heartrate2.png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Heart rate" type="number" placeholder="bpm" id="heart-rate-input" [(ngModel)]="heartRate"></ion-input>
+          <ion-input
+            label="Heart rate"
+            type="number"
+            placeholder="bpm"
+            id="heart-rate-input"
+            [(ngModel)]="heartRate"
+            [ngClass]="{ 'not-normal': heartRate && (heartRate < 60 || heartRate > 100) }"
+          ></ion-input>
         </ion-item>
       </ion-item>
-
+    
       <ion-item class="bp">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="/assets/bp.png" />
+          <img alt="Silhouette of mountains" src="/assets/bp2.png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Blood pressure" type="text" placeholder="mmHg" id="bp-input" [(ngModel)]="bloodPressure"></ion-input>
+          <ion-input
+            label="Blood pressure"
+            type="text"
+            placeholder="mmHg"
+            id="bp-input"
+            [(ngModel)]="bloodPressure"
+            [ngClass]="{ 'not-normal': bloodPressure && !isBloodPressureNormal(bloodPressure) }"
+          ></ion-input>
         </ion-item>
       </ion-item>
-      
-
+    
       <ion-item class="spo2">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="/assets/SpO2.png" />
+          <img alt="Silhouette of mountains" src="/assets/SpO2(2).png" />
         </ion-thumbnail>
         <ion-item>
-          <ion-input label="Oxygen level" type="number" placeholder="%" id="oxygen-level-input" [(ngModel)]="oxygenLevel"></ion-input>
+          <ion-input
+            label="Oxygen level"
+            type="number"
+            placeholder="%"
+            id="oxygen-level-input"
+            [(ngModel)]="oxygenLevel"
+            [ngClass]="{ 'not-normal': oxygenLevel && (oxygenLevel < 95 || oxygenLevel > 99) }"
+          ></ion-input>
         </ion-item>
       </ion-item>
 
-      <ion-item class="bot">
-        <ion-button fill="clear" class="buttonclick" (click)="checkVitalSigns()" (click)="submitData()">
-          <img  height="60" src="/assets/button.png">
-        </ion-button>
+     <ion-item class="bot" > <ion-button fill="clear" class="bot" (click)="checkVitalSigns()" (click)="submitData()">
+      <img  height="60" src="/assets/button.png">
+    </ion-button></ion-item>
+       
 
-      </ion-item>
+      
 
     </ion-card-content>
 

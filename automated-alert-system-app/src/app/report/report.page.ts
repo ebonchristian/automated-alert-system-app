@@ -13,6 +13,7 @@ export class ReportPage {
     oxygenLevel: number;
     isNormal: boolean;
   }[] = [];
+  
 
   constructor() {}
 
@@ -25,7 +26,7 @@ export class ReportPage {
     this.reports = storedReports
       .filter((report: any) => report.heartRate || report.bloodPressure || report.oxygenLevel) // Filter out empty objects
       .map((report: any) => ({
-        date: new Date(report.date), // Convert the date string to a Date object
+        date: new Date(report.date),
         heartRate: report.heartRate,
         bloodPressure: report.bloodPressure,
         oxygenLevel: report.oxygenLevel,
@@ -33,7 +34,8 @@ export class ReportPage {
       }))
       .reverse();
   }
-
+  
+  
   getDate(date: Date): string {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
@@ -43,6 +45,7 @@ export class ReportPage {
     const options: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit' };
     return date.toLocaleTimeString(undefined, options);
   }
+  
   
 
   isBloodPressureNormal(bloodPressure: string): boolean {
@@ -54,10 +57,14 @@ export class ReportPage {
 
   isReportNormal(report: any): boolean {
     const isHeartRateNormal = report.heartRate >= 60 && report.heartRate <= 100;
-    const isBPNormal = this.isBloodPressureNormal(report.bloodPressure);
+    const bpValues = report.bloodPressure.split('/');
+    const systolic = parseInt(bpValues[0]);
+    const diastolic = parseInt(bpValues[1]);
+    const isBPNormal = !isNaN(systolic) && !isNaN(diastolic) && systolic < 120 && diastolic < 80;
     const isOxygenLevelNormal = report.oxygenLevel >= 95 && report.oxygenLevel <= 99;
     return isHeartRateNormal && isBPNormal && isOxygenLevelNormal;
   }
+  
 
   deleteReport(index: number) {
     this.reports.splice(index, 1);

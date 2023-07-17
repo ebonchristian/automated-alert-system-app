@@ -15,11 +15,12 @@ ion-content{
 } */
 
  ion-card-title{
+  margin-top: 40px;
   $font-family-base: 'Nunito', sans-serif;
   color: #DD9250;
   filter: drop-shadow(2px 2px 1px black);
   text-align: center;
-  height: 50px;
+  height: 40px;
 
 
 
@@ -34,29 +35,33 @@ ion-content{
    text-align: left;
  }
 
- .heartrate {
-  
-    --border-radius: 20px 20px 0px 0px;
- }
 
 
-.bot{
 
-  --border-radius: 0px 0px 20px 20px;
-}
-.buttonclick{
- 
-  height: 65px;
+.bot {
+
+  height: 90px;
   margin: 0 auto;
+  margin-top: .01px;
   --border-radius: 20px 20px 20px 20px;
- 
 }
+
+ion-item {
+  background-color: transparent;
+  --background: transparent;
+}
+
+
+
 .vitalsigns{
   list-style: none;
   justify-content: center;
   text-align: justify;
 }
 
+.not-normal {
+  color: red;
+}
 
 
 }

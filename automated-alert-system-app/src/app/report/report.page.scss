@@ -32,4 +32,8 @@ ion-content {
     color: #DD9250;
     filter: drop-shadow(3px 3px rgb(0, 0, 0));
   }
+  .rates.not-normal {
+    color:  #ff0000; /* Set the background color for not-normal reports */
+  }
+  
 }
