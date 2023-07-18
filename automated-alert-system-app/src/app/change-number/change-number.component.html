@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="newNumber" (ngModelChange)="applyFormat()" placeholder="xxxx xxx xxxx" type="text" maxlength="13"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button expand="full" (click)="saveNumber()">Save</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

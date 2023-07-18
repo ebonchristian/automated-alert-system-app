@@ -1,69 +1,38 @@
-
-
 <ion-content [fullscreen]="true">
  
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title >
+      <ion-title>
         Settings
       </ion-title>
       <ion-buttons slot="end">
-        <ion-button color="primary" routerLink="/home"> Back </ion-button>
+        <ion-button color="primary" routerLink="/home">Back</ion-button>
       </ion-buttons>
   
     </ion-toolbar>
   </ion-header>
 
-
-  <ion-button id="popover-button" fill="clear" color="light" >Edit</ion-button>
+  <ion-button id="popover-button" fill="clear" color="light">Edit</ion-button>
   <ion-popover trigger="popover-button" [dismissOnSelect]="true">
     <ng-template>
 
       <ion-content>
         <ion-list>
-          <ion-item [button]="true" id="number">Current Number</ion-item>
-          <ion-item [button]="true" id="changenum">Change number</ion-item>
+          <ion-item [button]="true" id="number">Current Number: {{ currentNumber }}</ion-item>
+          <ion-item [button]="true" id="changenum" (click)="showChangeNumberPopover()">Change number</ion-item>
           <ion-item [button]="true" id="more option">More options...</ion-item>
   
           <ion-popover trigger="more option" [dismissOnSelect]="true" side="end">
             <ng-template>
               <ion-content>
                 <ion-list>
-                  <ion-item [button]="true" [detail]="false">dpa po okay</ion-item>
+                  <ion-item [button]="true" [detail]="false">At the right time, I, the Lord, will make it happen.</ion-item>
                 </ion-list>
               </ion-content>
-
-            
             </ng-template>
           </ion-popover>
         </ion-list>
       </ion-content>
-      
-      <ion-popover trigger="changenum" [dismissOnSelect]="true" side="end">
-        <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item [button]="true" [detail]="true">
-
-                <ion-input placeholder="xxxx xxx xxxx" type="input"></ion-input>
-              </ion-item>
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-
-      <ion-popover trigger="number" [dismissOnSelect]="true" side="end">
-        <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item [button]="true" [detail]="false">09612626205</ion-item>
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-
-
     </ng-template>
   </ion-popover>
 </ion-content>
-

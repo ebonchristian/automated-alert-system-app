@@ -9,45 +9,44 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   heartRate!: number;
-  bloodPressure!: string;
+  systolic!: number;
+  diastolic!: number;
   oxygenLevel!: number;
 
   constructor(private navCtrl: NavController, private router: Router) {}
 
   submitData() {
-    const newReport = {
-      date: new Date(),
-      heartRate: this.heartRate || 0,
-      bloodPressure: this.bloodPressure || '',
-      oxygenLevel: this.oxygenLevel || 0
-    };
-
-    let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
-    storedReports.push(newReport);
-    localStorage.setItem('reports', JSON.stringify(storedReports));
-
-    this.heartRate = 0;
-    this.bloodPressure = '';
-    this.oxygenLevel = 0;
+    if (this.isSystolicNormal(this.systolic) && this.isDiastolicNormal(this.diastolic)) {
+      const newReport = {
+        date: new Date(),
+        heartRate: this.heartRate || 0,
+        bloodPressure: `${this.systolic}/${this.diastolic}`,
+        oxygenLevel: this.oxygenLevel || 0
+      };
+  
+      let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
+      storedReports.push(newReport);
+      localStorage.setItem('reports', JSON.stringify(storedReports));
+  
+      this.heartRate = 0;
+      this.systolic = 0;
+      this.diastolic = 0;
+      this.oxygenLevel = 0;
+    }
   }
+  
 
   checkVitalSigns() {
-    var heartRateInput = parseInt((<HTMLInputElement>document.getElementById('heart-rate-input')).value);
-    var bpInput = (<HTMLInputElement>document.getElementById('bp-input')).value;
-    var oxygenLevelInput = parseInt((<HTMLInputElement>document.getElementById('oxygen-level-input')).value);
+    const isHeartRateNormal = this.heartRate >= 60 && this.heartRate <= 100;
+    const isSystolicNormal = this.isSystolicNormal(this.systolic);
+    const isDiastolicNormal = this.isDiastolicNormal(this.diastolic);
+    const isOxygenLevelNormal = this.oxygenLevel >= 95 && this.oxygenLevel <= 99;
 
-    var isHeartRateNormal = heartRateInput >= 60 && heartRateInput <= 100;
-    var bpValues = bpInput.split('/');
-    var systolic = parseInt(bpValues[0]);
-    var diastolic = parseInt(bpValues[1]);
-    var isBPNormal = !isNaN(systolic) && !isNaN(diastolic) && systolic < 120 && diastolic < 80;
-    var isOxygenLevelNormal = oxygenLevelInput >= 95 && oxygenLevelInput <= 99;
-
-    if (isHeartRateNormal && isBPNormal && isOxygenLevelNormal) {
+    if (isHeartRateNormal && isSystolicNormal && isDiastolicNormal && isOxygenLevelNormal) {
       const newReport = {
-        heartRate: heartRateInput,
-        bloodPressure: bpInput,
-        oxygenLevel: oxygenLevelInput
+        heartRate: this.heartRate,
+        bloodPressure: `${this.systolic}/${this.diastolic}`,
+        oxygenLevel: this.oxygenLevel
       };
 
       let storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
@@ -55,29 +54,34 @@ export class HomePage {
       localStorage.setItem('reports', JSON.stringify(storedReports));
 
       this.heartRate = 0;
-      this.bloodPressure = '';
+      this.systolic = 0;
+      this.diastolic = 0;
       this.oxygenLevel = 0;
     } else {
       this.router.navigate(['/not-normal'], {
         queryParams: {
-          heartRate: heartRateInput,
-          bp: bpInput,
-          oxygenLevel: oxygenLevelInput
+          heartRate: this.heartRate,
+          bp: `${this.systolic}/${this.diastolic}`,
+          oxygenLevel: this.oxygenLevel
         }
       });
     }
   }
 
-  validateBloodPressure(bpInput: string): boolean {
-    const regex = /^\d{2,3}\/\d{2,3}mmHg$/;
-    return regex.test(bpInput);
+  isHeartRateNormal(): boolean {
+    return this.heartRate >= 60 && this.heartRate <= 100;
   }
 
-  isBloodPressureNormal(bpInput: string): boolean {
-    const bpValues = bpInput.split('/');
-    const systolic = parseInt(bpValues[0]);
-    const diastolic = parseInt(bpValues[1]);
-    return !isNaN(systolic) && !isNaN(diastolic) && systolic < 120 && diastolic < 80;
+  isSystolicNormal(systolic: number): boolean {
+    return systolic < 120;
+  }
+
+  isDiastolicNormal(diastolic: number): boolean {
+    return diastolic < 80;
+  }
+
+  isOxygenLevelNormal(): boolean {
+    return this.oxygenLevel >= 95 && this.oxygenLevel <= 99;
   }
 
   isNotNormal(value: number | string): boolean {

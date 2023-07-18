@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SettingsPageRoutingModule } from './settings-routing.module';
 
 import { SettingsPage } from './settings.page';
+import { ChangeNumberComponent } from '../change-number/change-number.component'; // Import the ChangeNumberComponent
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    FormsModule, // Add FormsModule here
     IonicModule,
     SettingsPageRoutingModule
   ],
-  declarations: [SettingsPage]
+  declarations: [SettingsPage, ChangeNumberComponent] // Include the ChangeNumberComponent in declarations
 })
 export class SettingsPageModule {}

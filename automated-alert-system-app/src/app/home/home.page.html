@@ -1,36 +1,10 @@
-<ion-app >
+<ion-app>
   <ion-content>
- <!---<ion-header [translucent]="true">
-
-    <ion-toolbar >
-     
-      <ion-buttons slot="start">
-        <ion-icon name="watch-outline"></ion-icon>
-        <ion-icon name="warning-outline"></ion-icon>
-        <ion-icon name="walk-outline"></ion-icon>
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-icon name="water-outline"></ion-icon>
-        <ion-icon name="speedometer-outline"></ion-icon>
-      </ion-buttons>
-      <ion-buttons  slot="end">
-
-        <ion-datetime-button datetime="datetime" ></ion-datetime-button>
-        <ion-modal [keepContentsMounted]="true">
-          <ng-template>
-            <ion-datetime id="datetime"></ion-datetime>
-          </ng-template>
-        </ion-modal>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>-->
-    
-   
-   
     <!-- For the 3 vital signs and input -->
-
-   
     <ion-card-content>
-      <ion-card-title><img src="assets/title.png"></ion-card-title>
+      <ion-card-title>
+        <img src="assets/title.png">
+      </ion-card-title>
       <ion-card-header>
         <ion-card-subtitle color="light">
           Active
@@ -53,23 +27,34 @@
           ></ion-input>
         </ion-item>
       </ion-item>
-    
+
       <ion-item class="bp">
         <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="/assets/bp2.png" />
+          <img alt="Silhouette of mountains" src="/assets/bp3.png" />
         </ion-thumbnail>
-        <ion-item>
+        <ion-item lines="none" class="bp-input">
           <ion-input
-            label="Blood pressure"
-            type="text"
-            placeholder="mmHg"
-            id="bp-input"
-            [(ngModel)]="bloodPressure"
-            [ngClass]="{ 'not-normal': bloodPressure && !isBloodPressureNormal(bloodPressure) }"
+            [(ngModel)]="systolic"
+            type="number"
+            placeholder="SBP"
+            id="systolic-input"
+            [ngClass]="{ 'not-normal': !isSystolicNormal(systolic) }"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none" class="separator">
+          /
+        </ion-item>
+        <ion-item lines="none" class="bp-input">
+          <ion-input
+            [(ngModel)]="diastolic"
+            type="number"
+            placeholder="DBP"
+            id="diastolic-input"
+            [ngClass]="{ 'not-normal': !isDiastolicNormal(diastolic) }"
           ></ion-input>
         </ion-item>
       </ion-item>
-    
+      
       <ion-item class="spo2">
         <ion-thumbnail slot="start">
           <img alt="Silhouette of mountains" src="/assets/SpO2(2).png" />
@@ -86,17 +71,15 @@
         </ion-item>
       </ion-item>
 
-     <ion-item class="bot" > <ion-button fill="clear" class="bot" (click)="checkVitalSigns()" (click)="submitData()">
-      <img  height="60" src="/assets/button.png">
-    </ion-button></ion-item>
-       
-
-      
-
+      <ion-item class="bot">
+        <ion-button fill="clear" class="bot" (click)="checkVitalSigns(); submitData()">
+          <img height="60" src="/assets/button.png">
+        </ion-button>
+      </ion-item>
     </ion-card-content>
 
     <!-- For tabs bottom -->
-    <ion-tabs >
+    <ion-tabs>
       <ion-tab-bar [translucent]="true">
         <ion-tab-button>
           <ion-icon name="home" label="Home" routerLink="/not-normal"></ion-icon>
@@ -109,9 +92,5 @@
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
-
-
   </ion-content>
-
- 
 </ion-app>

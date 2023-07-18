@@ -21,19 +21,22 @@ export class ReportPage {
     this.loadReports();
   }
 
-loadReports() {
-  const storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
-  this.reports = storedReports
-    .filter((report: any) => report.heartRate || report.bloodPressure || report.oxygenLevel)
-    .map((report: any) => ({
-      date: new Date(report.date), // Convert the date string to a Date object
-      heartRate: report.heartRate,
-      bloodPressure: report.bloodPressure,
-      oxygenLevel: report.oxygenLevel,
-      isNormal: this.isReportNormal(report),
-    }))
-    .reverse();
-}
+  loadReports() {
+    const storedReports = JSON.parse(localStorage.getItem('reports') || '[]');
+    this.reports = storedReports
+      .filter((report: any) => {
+        return report.heartRate !== 0 || report.bloodPressure !== '0/0' || report.oxygenLevel !== 0;
+      })
+      .map((report: any) => ({
+        date: new Date(report.date),
+        heartRate: report.heartRate,
+        bloodPressure: report.bloodPressure,
+        oxygenLevel: report.oxygenLevel,
+        isNormal: this.isReportNormal(report),
+      }))
+      .reverse();
+  }
+  
 
   
   

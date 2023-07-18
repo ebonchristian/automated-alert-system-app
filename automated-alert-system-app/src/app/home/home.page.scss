@@ -40,7 +40,7 @@ ion-content{
 
 .bot {
 
-  height: 90px;
+  height: 100px;
   margin: 0 auto;
   margin-top: .01px;
   --border-radius: 20px 20px 20px 20px;
@@ -61,6 +61,20 @@ ion-item {
 
 .not-normal {
   color: red;
+}
+
+ion-item.bp-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90px;
+  font-size: 10px;
+}
+
+ion-item.separator {
+  font-size: 1rem;
+  width: auto;
+  margin: 0;
 }
 
 
