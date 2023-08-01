@@ -11,8 +11,8 @@ export class SettingsPage implements OnInit {
   currentNumber: string;
 
   constructor(private popoverController: PopoverController) {
-    // Initialize the current number (replace it with your logic)
-    this.currentNumber = '09612626205';
+    // Initialize the current number from Local Storage if it exists, otherwise set a default value
+    this.currentNumber = localStorage.getItem('currentNumber') || '09612626205';
   }
 
   ngOnInit() {
@@ -32,6 +32,8 @@ export class SettingsPage implements OnInit {
     const { data } = await popover.onDidDismiss();
     if (data && data.newNumber) {
       this.currentNumber = data.newNumber;
+      // Save the updated currentNumber to Local Storage
+      localStorage.setItem('currentNumber', this.currentNumber);
     }
   }
 }
